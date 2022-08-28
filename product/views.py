@@ -1,6 +1,6 @@
 from django.db.models import Q
 from .models import Comment, Product,Category,User,Rating
-from .serialize import CommentSerialize, ProductSerialize,CategorySerializer,RatingSerializers
+from .serialize import CommentSerialize, ProductSerialize,CategorySerializer,RatingSerializers,CategoryListSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import APIView,api_view,action
 from django.http import Http404
@@ -14,6 +14,12 @@ class ProductList(APIView) :
         product=Product.objects.all()[0:4]
         serializer=ProductSerialize(product,many=True)
         return Response(serializer.data)
+
+class ListOfCategories(APIView) :
+    def get(self,request):
+        category=Category.objects.all()
+        serializer=CategoryListSerializer(category,many=True)
+        return Response(serializer.data)        
 
 class ProductDetails(APIView):
     def get_object(self,category_slug,product_slug):

@@ -37,3 +37,13 @@ class CategorySerializer(serializers.ModelSerializer):
         )
 
 
+class CategoryListSerializer(serializers.ModelSerializer):
+  
+    class Meta:
+        model = Category
+        fields = (
+            "id",
+            "name",
+            "get_absolute_url",
+        )
+
