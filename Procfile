@@ -1,0 +1,1 @@
+web: gunicorn mealrate.wsgi --log-file -
