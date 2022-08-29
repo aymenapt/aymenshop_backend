@@ -10,6 +10,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Category(models.Model):
     name=models.CharField(max_length=255)
     slug=models.SlugField()
+    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
 
     class Meta:
         ordering=['name']
@@ -18,7 +19,14 @@ class Category(models.Model):
         return self.name   
 
     def get_absolute_url(self):
-        return f'/{self.slug}/'     
+        return f'/{self.slug}/'   
+    
+      
+    def get_image(self):
+        if self.image:
+            return 'http://127.0.0.1:8000' + self.image.url
+        return ''
+          
 
 class Product(models.Model):
     category=models.ForeignKey(Category,on_delete=models.CASCADE,related_name='products')
@@ -93,10 +101,17 @@ class Comment(models.Model):
         ordering = ('-date_added',)
 
 
-
-
-
 class Rating(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     stars = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
+
+
+class Ads(models.Model):
+    image = models.ImageField(upload_to='uploads/', blank=True, null=True)      
+    def get_image(self):
+        if self.image:
+            return 'http://127.0.0.1:8000' + self.image.url
+        return ''
+          
+       

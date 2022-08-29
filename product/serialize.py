@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, Product,Comment,Rating
+from .models import Category, Product,Comment,Rating,Ads
 
 #make serilize here 
 
@@ -44,6 +44,17 @@ class CategoryListSerializer(serializers.ModelSerializer):
         fields = (
             "id",
             "name",
+            "get_image",
             "get_absolute_url",
+        )
+
+
+class AdsSerializer(serializers.ModelSerializer):
+  
+    class Meta:
+        model = Ads
+        fields = (
+            "id",
+            "get_image",
         )
 
