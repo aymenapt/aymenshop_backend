@@ -6,6 +6,7 @@ from PIL import Image
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
+
 class Category(models.Model):
     name=models.CharField(max_length=255)
     slug=models.SlugField()
