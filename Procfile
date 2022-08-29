@@ -1,1 +1,1 @@
-web: gunicorn mealrate.wsgi --log-file -
+web: gunicorn aymenshop.wsgi --log-file -
