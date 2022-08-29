@@ -1,5 +1,5 @@
-from django.contrib import admin
-from django.urls import path,include
+
+from django.urls import path
 from product import views
 urlpatterns = [
     path('latestproducts/', views.ProductList.as_view()),

@@ -2,9 +2,9 @@ from django.db.models import Q
 from .models import Comment, Product,Category,User,Rating
 from .serialize import CommentSerialize, ProductSerialize,CategorySerializer,RatingSerializers,CategoryListSerializer
 from rest_framework.response import Response
-from rest_framework.decorators import APIView,api_view,action
+from rest_framework.decorators import APIView,api_view
 from django.http import Http404
-from rest_framework import generics,status,viewsets
+from rest_framework import generics,status
 
 
 # Create your views here.
