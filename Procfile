@@ -1,1 +1,1 @@
-web: gunicorn aymenshop.wsgi --log-file -
+web: gunicorn aymen_shop.wsgi --log-file -
