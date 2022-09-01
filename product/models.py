@@ -10,7 +10,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Category(models.Model):
     name=models.CharField(max_length=255)
     slug=models.SlugField()
-    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    image = models.ImageField(upload_to='media/uploads/', blank=True, null=True)
 
     class Meta:
         ordering=['name']
@@ -34,8 +34,8 @@ class Product(models.Model):
     description = models.TextField(blank=True, null=True)
     slug=models.SlugField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
-    thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    image = models.ImageField(upload_to='media/uploads/', blank=True, null=True)
+    thumbnail = models.ImageField(upload_to='media/uploads/', blank=True, null=True)
     date_added=models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -108,7 +108,7 @@ class Rating(models.Model):
 
 
 class Ads(models.Model):
-    image = models.ImageField(upload_to='uploads/', blank=True, null=True)      
+    image = models.ImageField(upload_to='media/uploads/', blank=True, null=True)      
     def get_image(self):
         if self.image:
             return 'https://aymenshop.herokuapp.com' + self.image.url
