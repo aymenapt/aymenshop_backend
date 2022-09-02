@@ -3,6 +3,7 @@ autopep8==1.7.0
 certifi==2022.6.15
 cffi==1.15.1
 charset-normalizer==2.1.1
+cloudinary==1.29.0
 coreapi==2.3.3
 coreschema==0.0.4
 cryptography==37.0.4
@@ -10,8 +11,10 @@ defusedxml==0.7.1
 dj-database-url==1.0.0
 dj-static==0.0.6
 Django==4.1
+django-cloudinary-storage==0.3.0
 django-cors-headers==3.13.0
 django-templated-mail==1.1.1
+django-utils-six==2.0
 djangorestframework==3.13.1
 djangorestframework-simplejwt==4.8.0
 djoser==2.1.0
