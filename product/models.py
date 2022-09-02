@@ -24,7 +24,7 @@ class Category(models.Model):
       
     def get_image(self):
         if self.image:
-            return 'https://aymenshop.herokuapp.com' + self.image.url
+            return   self.image.url
         return ''
           
 
@@ -63,18 +63,18 @@ class Product(models.Model):
     
     def get_image(self):
         if self.image:
-            return 'https://aymenshop.herokuapp.com' + self.image.url
+            return self.image.url
         return ''
     
     def get_thumbnail(self):
         if self.thumbnail:
-            return 'https://aymenshop.herokuapp.com' + self.thumbnail.url
+            return self.thumbnail.url
         else:
             if self.image:
                 self.thumbnail = self.make_thumbnail(self.image)
                 self.save()
 
-                return 'https://aymenshop.herokuapp.com' + self.thumbnail.url
+                return   self.thumbnail.url
             else:
                 return ''
     
@@ -111,7 +111,7 @@ class Ads(models.Model):
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)      
     def get_image(self):
         if self.image:
-            return 'https://aymenshop.herokuapp.com' + self.image.url
+            return   self.image.url
         return ''
           
        
