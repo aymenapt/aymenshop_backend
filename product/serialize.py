@@ -6,13 +6,14 @@ from .models import Category, Product,Comment,Rating,Ads
 class RatingSerializers(serializers.ModelSerializer) : 
     class Meta :
         model = Rating
-        fields=['id','product','stars']
+        fields=['id','product','user','stars']
 
 class CommentSerialize(serializers.ModelSerializer):
      class Meta:
         model = Comment
         fields = [
             "id",
+            "created_by",
             "comments",
             "product"
         ]
