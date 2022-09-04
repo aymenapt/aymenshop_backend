@@ -59,7 +59,7 @@ class Product(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return f'/{self.category.slug}/{self.slug}/'
+        return f'/{self.slug}/'
     
     def get_image(self):
              return self.image.url
@@ -68,7 +68,6 @@ class Product(models.Model):
 
 
 class Comment(models.Model):
-    created_by=models.ForeignKey(User,on_delete=models.CASCADE,related_name='comments')
     product=models.ForeignKey(Product,on_delete=models.CASCADE,related_name='comments')
     comments=models.CharField(max_length=255)
     date_added=models.DateTimeField(auto_now_add=True)
@@ -79,7 +78,6 @@ class Comment(models.Model):
 
 class Rating(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     stars = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
 
 

@@ -21,15 +21,15 @@ class ListOfCategories(generics.ListAPIView) :
          
 
 class ProductDetails(APIView):
-    def get_object(self,category_slug,product_slug):
+    def get_object(self,product_slug):
         try :
-            return Product.objects.filter(category__slug=category_slug).get(slug=product_slug)
+            return Product.objects.get(slug=product_slug)
 
         except Product.DoesNotExist :
             raise Http404
 
-    def get(self,request,category_slug,product_slug,format=None):
-        product  =self.get_object(category_slug,product_slug)     
+    def get(self,request,product_slug,format=None):
+        product  =self.get_object(product_slug)     
         serializer=ProductSerialize(product)   
         return Response(serializer.data)
 
@@ -61,22 +61,7 @@ class AddComments(generics.ListCreateAPIView):
 class Addrating(generics.CreateAPIView) :
      queryset = Rating.objects.all()
      serializer_class = RatingSerializers
-     def post(self,request,pk) :
-       
-             product=Product.objects.get(id=pk)
-             username=request.user
-             user=User.objects.get(username=username)
-             rating=Rating.objects.create(
-                    user=user,
-                    product=product,
-                    stars=request.data['stars']
-                 )
-             serializer=RatingSerializers(rating,many=False)
-             json={
-                 'message':'the value has created',
-                'response':serializer.data
-            }
-             return Response(json,status=status.HTTP_200_OK)
+     
 class ListOfAds(generics.ListCreateAPIView) :
     queryset = Ads.objects.all()
     serializer_class = AdsSerializer
