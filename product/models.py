@@ -60,6 +60,8 @@ class Product(models.Model):
     
     def get_absolute_url(self):
         return f'/{self.slug}/'
+    def catergoryname(self):
+        return self.category.name
     
     def get_image(self):
              return self.image.url

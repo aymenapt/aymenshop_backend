@@ -15,9 +15,10 @@ class ProductList(APIView) :
         serializer=ProductSerialize(product,many=True)
         return Response(serializer.data)
 
-class ListOfCategories(generics.ListAPIView) :
-    queryset = Category.objects.all()
-    serializer_class = CategoryListSerializer
+
+class ListOfAllProducts(generics.ListAPIView) :
+    queryset = Product.objects.all()
+    serializer_class = ProductSerialize
          
 
 class ProductDetails(APIView):

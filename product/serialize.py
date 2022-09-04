@@ -22,7 +22,7 @@ class ProductSerialize(serializers.ModelSerializer):
     comments=CommentSerialize(many=True)
     class Meta :
         model=Product
-        fields=['id','name','description','get_absolute_url','get_image','price','comments','num_rating','avg_rating']
+        fields=['id','name','description','get_absolute_url','catergoryname','get_image','price','comments','num_rating','avg_rating']
 
 
 class CategorySerializer(serializers.ModelSerializer):
